@@ -2,9 +2,9 @@
 
 The official implementation of **[Preliminary Study on Rapid Serial Visualization Presentation Multi-Class Target EEG Classification](https://ieeexplore.ieee.org/abstract/document/10629193)**.
 
-![alt text](figure/Model_framework.png)
+![alt text](figure/Model_framework.jpg)
 
-The MTREE-Net model consists of a two-stream feature extractor, a dual-complementary module (DCM), a contribution-guided reweighting module (CG-RM), and a hierarchical self-distillation module (HSM). The network employs several loss functions: intra-modal triplet cross-entropy losses (![Intra-modal loss](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{intra-eeg}},\quad\mathcal{L}_{\text{intra-em}})), binary cross-entropy loss (![Binary cross-entropy loss](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{bce}})), triplet cross-entropy loss (![Triplet loss](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{ce}})), contribution-guided loss with L1-norm (![Contribution-guided loss](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{cg}})), self-distillation loss using symmetric Kullback-Leibler divergence (![Self-distillation loss](https://latex.codecogs.com/svg.latex?\mathcal{L}_{\text{sd}})). The output logits **T**, **N**, **T1**, and **T2** correspond to **target**, **non-target**, **target-1**, and **target-2** classes, respectively.
+MDCNet consists of a temporal feature extractor and an attention-guided classifier. The extractor uses two multiscale dilated convolution banks along the time axis, followed by depthwise separable spatial convolution and subsequent temporal convolutions with pooling, to obtain compact spatiotemporal EEG representations. The classifier employs two fully connected layers: a binary target/non-target branch whose target score gates the outputs of a three-class branch (target 1, target 2, non-target). Joint training of both branches enables the binary decision to serve as an attention signal that enhances multi-class RSVP-EEG target discrimination.
 
 
 ## 1&nbsp; Installation
